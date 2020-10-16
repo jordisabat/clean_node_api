@@ -3,6 +3,6 @@ export interface HttpResponse {
   body: any
 }
 
-export interface HttpResquest {
+export interface HttpRequest {
   body?: any
 }
