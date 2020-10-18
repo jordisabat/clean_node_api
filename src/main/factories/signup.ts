@@ -5,6 +5,7 @@ import { SignUpController } from '../../presentation/controllers/signup/signup'
 import { Controller } from '../../presentation/protocols'
 import { EmailValidatorAdapter } from '../../presentation/utils/email_validator_adaptor'
 import { LogControllerDecorator } from '../decorators/log'
+// import { LogMongoRepository } from '../../infrastructure/db/mongodb/'
 
 export const makeSignUpController = (): Controller => {
   const emailValidatorAdapter = new EmailValidatorAdapter()
@@ -16,5 +17,6 @@ export const makeSignUpController = (): Controller => {
     emailValidatorAdapter,
     dbAddAccount
   )
+  // const logMongoRepository = new LogMongoRepository()
   return new LogControllerDecorator(signUpController)
 }
