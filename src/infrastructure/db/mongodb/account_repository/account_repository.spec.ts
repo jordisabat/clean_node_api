@@ -1,5 +1,5 @@
 import { MongoHelper } from '../helpers/mongo_helper'
-import { AccountMongoRepository } from './account'
+import { AccountMongoRepository } from './account_repository'
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {
     await MongoHelper.connect(process.env.MONGO_URL)
