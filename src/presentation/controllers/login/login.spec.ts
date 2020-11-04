@@ -1,15 +1,28 @@
 import { MissingParamError } from '../../errors'
 import { badRequest } from '../../helpers/http_helper'
+import { EmailValidator } from '../signup/signup_protocols'
 import { LoginController } from './login'
+
+const makeEmailValidator = (): EmailValidator => {
+  class EmailValidatorStub implements EmailValidator {
+    isValid(email: string): boolean {
+      return true
+    }
+  }
+  return new EmailValidatorStub()
+}
 
 interface SutTypes {
   sut: LoginController
+  emailValidatorStub: EmailValidator
 }
 
 const makeSut = (): SutTypes => {
-  const sut = new LoginController()
+  const emailValidatorStub = makeEmailValidator()
+  const sut = new LoginController(emailValidatorStub)
   return {
-    sut
+    sut,
+    emailValidatorStub
   }
 }
 
@@ -42,5 +55,22 @@ describe('Login Controller', () => {
 
     // assert
     expect(httpResponse).toEqual(badRequest(new MissingParamError('password')))
+  })
+
+  test('Should return 400 if no password is provided', async () => {
+    // arrange
+    const { sut, emailValidatorStub } = makeSut()
+    const isValidSpy = jest.spyOn(emailValidatorStub, 'isValid')
+    const httpRequest = {
+      body: {
+        email: 'any_email@email.com',
+        password: 'any_password'
+      }
+    }
+    // act
+    await sut.handle(httpRequest)
+
+    // assert
+    expect(isValidSpy).toHaveBeenCalledWith('any_email@email.com')
   })
 })
