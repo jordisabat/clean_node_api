@@ -2,7 +2,8 @@ import { InvalidParamError, MissingParamError } from '../../errors'
 import {
   badRequest,
   serverError,
-  unauthorized
+  unauthorized,
+  ok
 } from '../../helpers/http_helper'
 import {
   Controller,
@@ -38,6 +39,7 @@ export class LoginController implements Controller {
       if (!auth) {
         return unauthorized()
       }
+      return ok({ accessToken: 'any_token' })
     } catch (error) {
       return serverError(error)
     }
