@@ -3,7 +3,7 @@ import {
   AddAccountModel,
   Encrypter
 } from '../add_account/db_add_account_protocols'
-import { AddAccountRepository } from '../../protocols/add_account_repository'
+import { AddAccountRepository } from '../../protocols/db/add_account_repository'
 import { DbAddAccount } from './db_add_account'
 
 interface SutTypes {
