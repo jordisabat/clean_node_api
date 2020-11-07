@@ -190,7 +190,7 @@ describe('DbAuthentication UseCase', () => {
     await expect(promise).rejects.toThrow()
   })
 
-  test('Should call TokenGenerator with correct id', async () => {
+  test('Should return token on success', async () => {
     // arrange
     const { sut } = makeSut()
     // act
