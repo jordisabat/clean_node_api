@@ -1,4 +1,4 @@
-import { Validation } from '../../../presentation/controllers/signup/signup_protocols'
+import { Validation } from '../../../presentation/controllers/signup/signup_controller_protocols'
 import {
   ValidationComposite,
   RequiredFieldValidation,

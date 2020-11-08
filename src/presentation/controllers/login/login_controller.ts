@@ -4,13 +4,13 @@ import {
   ok,
   badRequest
 } from '../../helpers/http/http_helper'
-import { Validation } from '../signup/signup_protocols'
+import { Validation } from '../signup/signup_controller_protocols'
 import {
   Controller,
   HttpRequest,
   HttpResponse,
   Authentication
-} from './login_protocols'
+} from './login_controller_protocols'
 
 export class LoginController implements Controller {
   private readonly authentication: Authentication

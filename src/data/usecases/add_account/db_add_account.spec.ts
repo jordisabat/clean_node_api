@@ -1,9 +1,9 @@
 import { AccountModel } from '../../../domain/models/account_model'
+import { AddAccountRepository } from '../../protocols/db/account/add_account_repository'
 import {
   AddAccountModel,
   Hasher
 } from '../add_account/db_add_account_protocols'
-import { AddAccountRepository } from '../../protocols/db/add_account_repository'
 import { DbAddAccount } from './db_add_account'
 
 interface SutTypes {
