@@ -2,7 +2,9 @@
   "name": "clean_node_api",
   "version": "1.1.0",
   "description": "NodeJs Rest API using TDD, Clean Architecture and Typescript",
-  "main": "index.js",
+  "author": "Jordi Sabat",
+  "license": "ISC",
+  "repository": "github:jordisabat/clean_node_api",
   "scripts": {
     "start": "node dist/main/server.js",
     "build": "rimraf dist && tsc",
@@ -16,8 +18,6 @@
     "test:ci": "npm test -- --coverage"
   },
   "keywords": [],
-  "author": "Jordi Sabat",
-  "license": "ISC",
   "devDependencies": {
     "@shelf/jest-mongodb": "^1.2.3",
     "@types/bcrypt": "^3.0.0",
