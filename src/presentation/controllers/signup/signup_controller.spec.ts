@@ -8,7 +8,10 @@ import {
 } from './signup_controller_protocols'
 import { HttpRequest } from '../../protocols'
 import { badRequest, ok, serverError } from '../../helpers/http/http_helper'
-import { Authentication, AuthenticationModel } from '../login/login_controller_protocols'
+import {
+  Authentication,
+  AuthenticationModel
+} from '../login/login_controller_protocols'
 
 const makeFakeRequest = (): HttpRequest => ({
   body: {
@@ -65,7 +68,11 @@ const makeSut = (): SutTypes => {
   const addAccountStub = makeAddAccount()
   const validationStub = makeValidaton()
   const authenticationStub = makeAuthentication()
-  const sut = new SignUpController(addAccountStub, validationStub, authenticationStub)
+  const sut = new SignUpController(
+    addAccountStub,
+    validationStub,
+    authenticationStub
+  )
   return {
     sut,
     addAccountStub,
@@ -101,7 +108,7 @@ describe('SignUp Controller', () => {
     const { sut } = makeSut()
     const httpRequest = makeFakeRequest()
     const httpResponse = await sut.handle(httpRequest)
-    expect(httpResponse).toEqual(ok(makeFakeAccount()))
+    expect(httpResponse).toEqual(ok({ accessToken: 'any_token' }))
   })
 
   test('Should call Validation with correct values', async () => {
