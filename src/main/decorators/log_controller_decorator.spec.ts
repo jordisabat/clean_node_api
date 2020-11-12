@@ -22,7 +22,7 @@ const makeController = (): Controller => {
   }
   return new ControllerStub()
 }
-// adicionando log de error: min 15:30
+
 const makeLogErrorRepository = (): LogErrorRepository => {
   class LogErrorRepositoryStub implements LogErrorRepository {
     async logError(stack: string): Promise<void> {
